@@ -1,0 +1,6 @@
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\bin\Steam.dll.config
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\bin\Steam.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\bin\Steam.pdb
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.csprojResolveAssemblyReference.cache
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.pdb
