@@ -17,8 +17,12 @@ namespace Steam
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            const string testMessage = "ik neuk jullie allemaal de moeder";
-            Response.Write(@"<script language='javascript'>alert('" + testMessage + " .');</script>");
+
+            Page home = HttpContext.Current.Handler as Page;
+            if (home != null)
+            {
+              ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('Thank you for signing up. You can now login.');window.location='Front Page.aspx';", true);  
+            }
         }
     }
 }

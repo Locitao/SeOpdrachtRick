@@ -4,3 +4,13 @@ C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Ste
 C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.csprojResolveAssemblyReference.cache
 C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.dll
 C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\Site\Steam\Steam\obj\Debug\Steam.pdb
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Steam.dll.config
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Steam.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Steam.pdb
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\obj\Debug\Steam.csprojResolveAssemblyReference.cache
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\obj\Debug\Steam.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\obj\Debug\Steam.pdb
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Oracle.DataAccess.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Oracle.DataAccess.EntityFramework.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\rvanduijnhoven\Google Drive\Fontys P3\SE2\Individuele opdracht\SeOpdrachtRick\Site\Steam\Steam\bin\Oracle.Web.dll

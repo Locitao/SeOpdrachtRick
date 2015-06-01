@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style2.css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -27,7 +27,7 @@
         </div>
         
 
-        <br/><asp:Button ID="btnCreate" runat="server" Text="Create account" OnClick="btnCreate_Click" />
+        <br/><asp:Button CssClass="button" ID="btnCreate" runat="server" Text="Create account" OnClick="btnCreate_Click" />
     </div>
         
 
