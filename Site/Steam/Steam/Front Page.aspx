@@ -12,8 +12,8 @@
     <form id="form1" runat="server">
         <h1>Steam</h1>
         <a href="Signup.aspx" id="logsign">Log in/sign up</a><br/>
-        <!--<asp:Button CssClass="button" ID="btnTestConnection" runat="server" Text="Test database connection" OnClick="btnTestConnection_Click" />
-        <asp:Label ID="lblTest" runat="server" Text="Komt hier shit?"></asp:Label>-->
+        <asp:Button CssClass="button" ID="btnTestConnection" runat="server" Text="Test database connection" OnClick="btnTestConnection_Click" />
+        <asp:Label ID="lblTest" runat="server" Text="Komt hier shit?"></asp:Label>
         
     </form>
     

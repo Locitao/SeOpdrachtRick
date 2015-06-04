@@ -88,5 +88,21 @@ namespace Steam
             }
             
         }
+
+        public string Insert_Game(int accId, int gameId)
+        {
+            try
+            {
+                string query = "INSERT INTO AC_LIBRARY (library_ID, acc_ID, product_ID) VALUES " +
+                               "(auto_inc_lib.nextval, '" + accId + "', '" + gameId + "')";
+                conn.Execute(query);
+                const string succes = "Game purchased and has been added to your library!";
+                return succes;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

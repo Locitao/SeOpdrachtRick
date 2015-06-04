@@ -87,6 +87,7 @@
     <Compile Include="Front Page.aspx.designer.cs">
       <DependentUpon>Front Page.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
