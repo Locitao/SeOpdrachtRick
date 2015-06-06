@@ -63,6 +63,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="page1.aspx" />
+    <Content Include="Steam.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -99,6 +101,13 @@
     <Compile Include="Library.aspx.designer.cs">
       <DependentUpon>Library.aspx</DependentUpon>
     </Compile>
+    <Compile Include="page1.aspx.cs">
+      <DependentUpon>page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page1.aspx.designer.cs">
+      <DependentUpon>page1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Signup.aspx.cs">
@@ -107,6 +116,13 @@
     </Compile>
     <Compile Include="Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Steam.Master.cs">
+      <DependentUpon>Steam.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Steam.Master.designer.cs">
+      <DependentUpon>Steam.Master</DependentUpon>
     </Compile>
     <Compile Include="Update.cs" />
   </ItemGroup>

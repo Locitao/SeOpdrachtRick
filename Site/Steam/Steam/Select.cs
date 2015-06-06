@@ -17,6 +17,7 @@ namespace Steam
         /// <returns>Int with the users balance.</returns>
         public int Select_Wallet(int accId)
         {
+            
             var sql = "SELECT steam_balance FROM USER_ACCOUNT WHERE acc_ID = '" + accId + "'";
             var balance = 0;
             var data = Connection.ExecuteQuery(sql);
@@ -39,7 +40,11 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
-
+        /// <summary>
+        /// Finds all the information about the given name.
+        /// </summary>
+        /// <param name="gameId">ID of the game.</param>
+        /// <returns>Dictionary with the information.</returns>
         public List<Dictionary<string, object>> Select_Game_Info(int gameId)
         {
             var sql =
@@ -48,12 +53,29 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
-
+        /// <summary>
+        /// Finds all the account information.
+        /// </summary>
+        /// <param name="email">Email that is given to identify the account.</param>
+        /// <param name="password">Password for the account.</param>
+        /// <returns>All the information for the account.</returns>
         public List<Dictionary<string, object>> Select_Account(string email, string password)
         {
             var sql =
                 "SELECT acc_ID, name_user, steam_balance, email_address, birth_date FROM USER_ACCOUNT WHERE email_address = '" +
                 email + "' AND passw = '" + password + "'";
+            var data = Connection.ExecuteQuery(sql);
+            return data;
+        }
+        /// <summary>
+        /// Returns a list of games belonging to the given category.
+        /// </summary>
+        /// <param name="catId">ID of the category who'se games we want to get.</param>
+        /// <returns>List of dictionary objects with the games.</returns>
+        public List<Dictionary<string, object>> Select_Category_Games(int catId)
+        {
+            var sql = "SELECT product_ID, pr_name, pr_description, price FROM PRODUCT WHERE category_ID = '" + catId +
+                      "'";
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
