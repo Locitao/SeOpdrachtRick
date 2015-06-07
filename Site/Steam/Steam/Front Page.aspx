@@ -10,7 +10,7 @@
 <body>
     
     <form id="mainForm" runat="server">
-        <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up"/>
+        <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
         <h1 id="steam">Steam</h1><br/>
         <!--<asp:Button CssClass="button" ID="btnTestConnection" runat="server" Text="Test database connection" OnClick="btnTestConnection_Click" />
         <asp:Label ID="lblTest" runat="server" Text="Komt hier shit?"></asp:Label>-->

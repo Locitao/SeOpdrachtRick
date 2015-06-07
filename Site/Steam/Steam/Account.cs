@@ -5,14 +5,23 @@ using System.Web;
 
 namespace Steam
 {
+    [Serializable]
     public class Account
     {
-        public int Id { get { return Id; } set { Id = value; } }
-        public string Name { get { return Name; } set { Name = value; } }
-        public string Password { get { return Password; } set { Password = value; } }
-        public string Email { get { return Email; } set { Email = value; } }
-        public DateTime Birthdate { get { return Birthdate; } set { Birthdate = value; } }
-        public int Balance { get { return Balance; } set { Balance = value; } }
+        private int id;
+        private string name;
+        private string password;
+        private string email;
+        private DateTime birthdate;
+        private int balance;
+
+
+        public int Id { get { return id; } set { id = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public string Password { get { return password; } set { password = value; } }
+        public string Email { get { return email; } set { email = value; } }
+        public DateTime Birthdate { get { return birthdate; } set { birthdate = value; } }
+        public int Balance { get { return balance; } set { balance = value; } }
 
         public Account(int id, string name, string password, string email, DateTime birthdate, int balance)
         {

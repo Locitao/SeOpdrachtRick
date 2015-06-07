@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
 using System.Web;
+
 
 namespace Steam
 {
@@ -13,7 +15,7 @@ namespace Steam
         private Select select;
         private Update update;
 
-        private void Update_Account(string email, string password)
+        private void Login(string email, string password)
         {
             int id = 0;
             string name = "tempname";
@@ -35,6 +37,13 @@ namespace Steam
             }
 
             account = new Account(id, name, pw, mail, birthdate, balance);
+            /*
+            HttpCookie userCookie = new HttpCookie("UserData");
+            userCookie["Name"] = "testname";
+            userCookie["Password"] = password;
+            userCookie.Expires = DateTime.Now.AddDays(30); */
+            
+            
 
         }
 

@@ -93,3 +93,12 @@ p {
     float: right;
     display: inline-block;
 }
+#login {
+    display: inline-block;
+}
+#tbForLogin {
+    display: inline-block;
+}
+#loginstuff {
+    display: inline-block;
+}

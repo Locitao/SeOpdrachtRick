@@ -44,5 +44,10 @@ namespace Steam
                 lblTest.Text = "fuck oracle";
             }
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Signup.aspx");
+        }
     }
 }
