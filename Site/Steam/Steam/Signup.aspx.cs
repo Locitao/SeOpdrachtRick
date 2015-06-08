@@ -104,6 +104,19 @@ namespace Steam
                     acc = admin.Login(email, password);
                     Session["UserData"] = null;
                     Session["UserData"] = acc;
+
+                    if (password == acc.Password && email == acc.Email)
+                    {
+                        Page home = HttpContext.Current.Handler as Page;
+                        if (home != null)
+                        {
+                            ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('You logged in.');window.location='Front Page.aspx';", true);
+                        } 
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Password or email is incorrect.')", true);
+                    }
                 }
             }
             catch (Exception)

@@ -30,12 +30,12 @@ namespace Steam
 
                 foreach (Dictionary<string, object> row in data)
                 {
-                    id = Convert.ToInt32(row["acc_ID"]);
-                    name = Convert.ToString(row["name_user"]);
-                    pw = Convert.ToString(row["passw"]);
-                    mail = Convert.ToString(row["email_address"]);
-                    birthdate = Convert.ToString(row["birth_date"]);
-                    balance = Convert.ToInt32(row["steam_balance"]);
+                    id = Convert.ToInt32(row["ACC_ID"]);
+                    name = Convert.ToString(row["NAME_USER"]);
+                    pw = Convert.ToString(row["PASSW"]);
+                    mail = Convert.ToString(row["EMAIL_ADDRESS"]);
+                    birthdate = Convert.ToString(row["BIRTH_DATE"]);
+                    balance = Convert.ToInt32(row["STEAM_BALANCE"]);
                 }
 
                 account = new Account(id, name, pw, mail, birthdate, balance);

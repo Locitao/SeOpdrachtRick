@@ -62,7 +62,7 @@ namespace Steam
         public List<Dictionary<string, object>> Select_Account(string email, string password)
         {
             var sql =
-                "SELECT acc_ID, name_user, steam_balance, email_address, birth_date FROM USER_ACCOUNT WHERE email_address = '" +
+                "SELECT acc_ID, name_user, steam_balance, email_address, birth_date, passw FROM USER_ACCOUNT WHERE email_address = '" +
                 email + "' AND passw = '" + password + "'";
             var data = Connection.ExecuteQuery(sql);
             return data;
