@@ -15,10 +15,15 @@ namespace Steam
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["newAccount"] != null)
+            if (Session["UserData"] != null)
+            {
+                Account acc = (Account)Session["UserData"];
+                btnLogin.Text = "Welcome " + acc.Name + ".";
+            }
+            else if (Session["newAccount"] != null)
             {
                 Account acc = (Account)Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name;
+                btnLogin.Text = "Welcome " + acc.Name + ".";
             }
         }
 

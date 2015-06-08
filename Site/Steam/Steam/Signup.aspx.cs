@@ -60,6 +60,7 @@ namespace Steam
             }
             else
             {
+                Session["UserData"] = null;
                 var name = tbSignupName.Text;
                 var email = tbSignupEmail.Text;
                 var password = tbSignupPassword.Text;
@@ -85,8 +86,31 @@ namespace Steam
         {
             //This was a test, to see if I could cast a session back to an account object. 
             //Response.Write(Session["UserData"]);
-            Account test = (Account)Session["UserData"];
-            Response.Write(test.Birthdate);
+            try
+            {
+                if (tbLoginEmail.Text == null)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Your email is incorrect.')", true);
+                }
+                else if (tbLoginPassword == null)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Password is empty.')", true);
+                }
+                else
+                {
+                    var email = tbLoginEmail.Text;
+                    var password = tbLoginPassword.Text;
+                    Account acc;
+                    acc = admin.Login(email, password);
+                    Session["UserData"] = null;
+                    Session["UserData"] = acc;
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             
         }
     }
