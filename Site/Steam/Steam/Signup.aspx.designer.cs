@@ -40,13 +40,13 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.TextBox tbSignupEmail;
         
         /// <summary>
-        /// tbSignUpUsername control.
+        /// tbBirthdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSignUpUsername;
+        protected global::System.Web.UI.WebControls.TextBox tbBirthdate;
         
         /// <summary>
         /// tbSignupPassword control.

@@ -11,13 +11,14 @@ namespace Steam
     public partial class Front_Page : System.Web.UI.Page
     {
         readonly Connection conn = new Connection();
-        private bool loggedIn = false;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (loggedIn)
+            if (Session["newAccount"] != null)
             {
-                
+                Account acc = (Account)Session["newAccount"];
+                btnLogin.Text = "Welcome " + acc.Name;
             }
         }
 

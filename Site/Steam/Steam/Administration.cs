@@ -10,18 +10,18 @@ namespace Steam
 {
     public class Administration
     {
-        private Account account;
-        private Insert insert;
-        private Select select;
-        private Update update;
+        public Account account;
+        public Insert insert = new Insert();
+        public Select select = new Select();
+        public Update update = new Update();
 
-        private void Login(string email, string password)
+        public void Login(string email, string password)
         {
             int id = 0;
             string name = "tempname";
             string pw = "temppw";
             string mail = "tempmail";
-            DateTime birthdate = new DateTime(1990, 10, 10);
+            string birthdate = "tempDate";
             int balance = 0;
 
             var data = select.Select_Account(email, password);
@@ -32,7 +32,7 @@ namespace Steam
                 name = Convert.ToString(row["name_user"]);
                 pw = Convert.ToString(row["passw"]);
                 mail = Convert.ToString(row["email_address"]);
-                birthdate = Convert.ToDateTime(row["birth_date"]);
+                birthdate = Convert.ToString(row["birth_date"]);
                 balance = Convert.ToInt32(row["steam_balance"]);
             }
 
@@ -51,6 +51,19 @@ namespace Steam
         {
             string data = account.ToString();
             return data;
+        }
+
+        public bool Insert_Account(string name, string email, string password, string birthdate)
+        {
+            try
+            {
+                insert.Insert_Account(name, password, email, birthdate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

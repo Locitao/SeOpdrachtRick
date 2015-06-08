@@ -12,9 +12,9 @@
     <div id="signup">
         <h1>Create account.</h1>
         <div id="text">
-            <p class="lblText">Name:</p><br/>
+            <p class="lblText">Full name:</p><br/>
             <p class="lblText">E-mail address:</p><br/>
-            <p class="lblText">Username:</p><br/>
+            <p class="lblText">Birthdate(format: day/month/year):</p><br/>
             <p class="lblText">Password:</p><br/>
             
 
@@ -22,7 +22,7 @@
         <div id="textBoxes">
             <asp:TextBox ID="tbSignupName" CssClass="textbox" runat="server"></asp:TextBox><br/>
             <asp:TextBox ID="tbSignupEmail" CssClass="textbox" runat="server"></asp:TextBox><br/>
-            <asp:Textbox ID="tbSignUpUsername" CssClass="textbox" runat="server"></asp:Textbox><br/>
+            <asp:Textbox ID="tbBirthdate" CssClass="textbox" runat="server"></asp:Textbox><br/>
             <asp:Textbox ID="tbSignupPassword" CssClass="textbox" runat="server" TextMode="Password"></asp:Textbox>
         </div>
         <div id="loginstuff">
