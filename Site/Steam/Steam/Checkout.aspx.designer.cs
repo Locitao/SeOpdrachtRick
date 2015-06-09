@@ -40,6 +40,33 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.ListBox lbCheckout;
         
         /// <summary>
+        /// rdPayPal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdPayPal;
+        
+        /// <summary>
+        /// rdIdeal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdIdeal;
+        
+        /// <summary>
+        /// rdWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdWallet;
+        
+        /// <summary>
         /// buy control.
         /// </summary>
         /// <remarks>

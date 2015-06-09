@@ -55,6 +55,63 @@ namespace Steam
         protected void buy_Click(object sender, EventArgs e)
         {
             admin.Fill_Games();
+            Fill_List();
+            int check = 0;
+            if (rdIdeal.Checked) { check = 1;}
+            if (rdPayPal.Checked) { check = 2;}
+            if (rdWallet.Checked) { check = 3;}
+
+            switch (check)
+            {
+                case 0:
+                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('You need to select a payment option.')", true);
+                    break;
+                case 1:
+                    Session["cart"] = null;
+                    Buy_Games();
+                    Page home = HttpContext.Current.Handler as Page;
+                    if (home != null)
+                    {
+                        ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg",
+                        "alert('Your purchased games can now be found in your library.');window.location='Front Page.aspx';", true);
+                    }
+                    break;
+                case 2:
+                    Session["cart"] = null;
+                    Buy_Games();
+                    Page home2 = HttpContext.Current.Handler as Page;
+                    if (home2 != null)
+                    {
+                        ScriptManager.RegisterStartupScript(home2, home2.GetType(), "err_msg",
+                        "alert('Your purchased games can now be found in your library.');window.location='Front Page.aspx';", true);
+                    }
+                    break;
+                case 3:
+                    int x = buying.Aggregate(0, (current, y) => current + y.Price);
+                    if (x > acc.Balance)
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Please add funds to your wallet or pick a different payment method.')", true);
+                    }
+                    else
+                    {
+                        Buy_Games();
+                        acc.Balance = acc.Balance - x;
+                        Page home3 = HttpContext.Current.Handler as Page;
+                        if (home3 != null)
+                        {
+                            ScriptManager.RegisterStartupScript(home3, home3.GetType(), "err_msg",
+                            "alert('Your purchased games can now be found in your library.');window.location='Front Page.aspx';", true);
+                        }
+                    }
+                    break;
+            }
+
+            
+            
+        }
+
+        protected void Buy_Games()
+        {
             foreach (var x in buying)
             {
                 foreach (var y in admin.games)
@@ -64,13 +121,6 @@ namespace Steam
                         admin.Add_Game(acc.Id, x.GameId);
                     }
                 }
-            }
-            Session["cart"] = null;
-            Page home = HttpContext.Current.Handler as Page;
-            if (home != null)
-            {
-                ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg",
-                "alert('Your purchased games can now be found in your library.');window.location='Front Page.aspx';", true);
             }
         }
     }

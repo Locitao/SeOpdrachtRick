@@ -16,10 +16,12 @@
 
 
         <div class="listboxes">
-        <asp:ListBox ID="lbCheckout" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
+            <asp:ListBox ID="lbCheckout" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
         </div>
+        <asp:RadioButton ID="rdPayPal" runat="server" Text="PayPal" GroupName="payment" />
+        <asp:RadioButton ID="rdIdeal" runat="server" Text="iDeal" GroupName="payment" />
+        <asp:RadioButton ID="rdWallet" runat="server" Text="Steam Wallet" GroupName="payment" />
         <asp:Button runat="server" CssClass="button" ID="buy" Text="Buy these games." OnClick="buy_Click"/>
-
 
     </form>
 </body>
