@@ -11,14 +11,15 @@
     
     <form id="mainForm" runat="server">
         <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
-        <h1 id="steam">Steam</h1><br/>
+        <h1 class="steam">Steam</h1><br/>
         <!--<asp:Button CssClass="button" ID="btnTestConnection" runat="server" Text="Test database connection" OnClick="btnTestConnection_Click" />
         <asp:Label ID="lblTest" runat="server" Text="Komt hier shit?"></asp:Label>-->
         <p>Welcome to Steam, the biggest digital retailer of games in the world! Browse our selection of games by clicking on one of the links in the sidebar!</p><br/>
-        <asp:Button runat="server" ID="mmorpg" CssClass="button" Text="MMORPG"/><br/>
+        <div class="buttons">
+        <asp:Button runat="server" ID="mmorpg" CssClass="button" Text="MMORPG" OnClick="mmorpg_Click"/><br/>
         <asp:Button runat="server" ID="racing" CssClass="button" Text="Racing"/><br/>
         <asp:Button runat="server" ID="fighting" CssClass="button" Text="Fighting"/>
-        
+        </div>
     </form>
     
 </body>

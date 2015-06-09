@@ -70,7 +70,7 @@ namespace Steam
         /// <summary>
         /// Returns a list of games belonging to the given category.
         /// </summary>
-        /// <param name="catId">ID of the category who'se games we want to get.</param>
+        /// <param name="catId">ID of the category whose games we want to get.</param>
         /// <returns>List of dictionary objects with the games.</returns>
         public List<Dictionary<string, object>> Select_Category_Games(int catId)
         {
@@ -79,7 +79,29 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
-
+        /// <summary>
+        /// Returns the category_ID and description of the selected category.
+        /// </summary>
+        /// <param name="description">Description of the category</param>
+        /// <returns>category_ID and category description.</returns>
+        public List<Dictionary<string, object>> Select_Category(string description)
+        {
+            var sql = "SELECT category_ID, cat_description FROM PROD_CATEGORY WHERE cat_description = '" + description +
+                      "'";
+            var data = Connection.ExecuteQuery(sql);
+            return data;
+        }
+        /// <summary>
+        /// Selects all the games. I realize that, if the database were a lot bigger, this would not be a good idea. However, here I
+        /// just wanted to see if I could do it, since I had a plan to try and use Linq.
+        /// </summary>
+        /// <returns>List of dictionary objects of all the games.</returns>
+        public List<Dictionary<string, object>> Select_All_Games()
+        {
+            const string sql = "SELECT * FROM PRODUCT";
+            var data = Connection.ExecuteQuery(sql);
+            return data;
+        }
 
     }
 }

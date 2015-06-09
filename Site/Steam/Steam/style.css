@@ -89,7 +89,7 @@ p {
 .lblText {
     margin: 5px;
 }
-#steam {
+.steam {
     float: right;
     display: inline-block;
 }
@@ -100,5 +100,9 @@ p {
     display: inline-block;
 }
 #loginstuff {
+    display: inline-block;
+}
+.listbox {
+    float: right;
     display: inline-block;
 }

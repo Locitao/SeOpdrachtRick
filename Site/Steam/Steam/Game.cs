@@ -8,16 +8,23 @@ namespace Steam
 {
     public class Game
     {
-        public int GameId { get { return GameId; } set { GameId = value;} }
-        public int CategoryId { get { return CategoryId; } set { CategoryId = value;} }
-        public string Description { get { return Description; } set
+        public int GameId { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public string Description { get; set; }
+
+        public string Name { get; set; }
+        public int Price { get; set; }
+
+        public Game(int gameId, int categoryId, string description, string name, int price)
         {
-            if (value == null) throw new ArgumentNullException("value");
-            Description = value; } }
-        public string Name { get { return Name; } set
-        {
-            if (value == null) throw new ArgumentNullException("value");
-            Name = value; } }
+            GameId = gameId;
+            CategoryId = categoryId;
+            Description = description;
+            Name = name;
+            Price = price;
+        }
 
         public override string ToString()
         {

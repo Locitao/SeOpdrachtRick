@@ -63,6 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Mmorpg.aspx" />
     <Content Include="page1.aspx" />
     <Content Include="Steam.Master" />
     <None Include="Web.Debug.config">
@@ -83,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Administration.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Front Page.aspx.cs">
       <DependentUpon>Front Page.aspx</DependentUpon>
@@ -102,6 +104,13 @@
     </Compile>
     <Compile Include="Library.aspx.designer.cs">
       <DependentUpon>Library.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mmorpg.aspx.cs">
+      <DependentUpon>Mmorpg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mmorpg.aspx.designer.cs">
+      <DependentUpon>Mmorpg.aspx</DependentUpon>
     </Compile>
     <Compile Include="page1.aspx.cs">
       <DependentUpon>page1.aspx</DependentUpon>
