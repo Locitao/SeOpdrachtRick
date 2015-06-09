@@ -27,6 +27,8 @@ namespace Steam
             if (Session["Games"] == null)
             {
                 Session_Games();
+                Fill_Mmorpg();
+                Fill_Listbox();
             }
 
             else
@@ -66,7 +68,7 @@ namespace Steam
         }
 
         /// <summary>
-        /// Fill the listbox with all MMORPGs
+        /// Fill the listbox with all MMORPGs.
         /// </summary>
         protected void Fill_Listbox()
         {
