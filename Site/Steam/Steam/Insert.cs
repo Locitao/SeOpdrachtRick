@@ -89,7 +89,7 @@ namespace Steam
             
         }
 
-        public string Insert_Game(int accId, int gameId)
+        public string Insert_Library(int accId, int gameId)
         {
             try
             {

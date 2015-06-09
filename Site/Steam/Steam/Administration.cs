@@ -129,5 +129,18 @@ namespace Steam
             }
             
         }
+
+        public bool Add_Game(int accId, int gameId)
+        {
+            try
+            {
+                var x = insert.Insert_Library(accId, gameId);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

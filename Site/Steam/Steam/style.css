@@ -45,7 +45,6 @@ td {
 
 .button {
     background-color: #428bca;
-    border-color: #357ebd;
     border-radius: 3px;
     border: 1px solid transparent;
     color: #fff;
@@ -54,7 +53,9 @@ td {
     font-size: 14px;
     line-height: 20px;
     padding: 6px 12px;
-    margin: 3px 0px;
+    margin-right: 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .button:hover {
@@ -103,6 +104,13 @@ p {
     display: inline-block;
 }
 .listbox {
-    float: right;
     display: inline-block;
+}
+.buttons {
+    display: inline-block;
+}
+.listboxes {
+    max-width: 500px;
+    display: inline-block;
+    margin-left: 10px;
 }

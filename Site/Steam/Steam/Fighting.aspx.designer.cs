@@ -10,16 +10,16 @@
 namespace Steam {
     
     
-    public partial class Mmorpg {
+    public partial class Fighting {
         
         /// <summary>
-        /// mmorpg control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm mmorpg;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// btnLogin control.
@@ -49,13 +49,13 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.Button racing;
         
         /// <summary>
-        /// fighting control.
+        /// fights control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button fighting;
+        protected global::System.Web.UI.WebControls.Button fights;
         
         /// <summary>
         /// lbMmorpg control.
