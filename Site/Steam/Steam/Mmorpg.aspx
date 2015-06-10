@@ -10,6 +10,9 @@
 <body>
     <form id="mmorpg" runat="server">
     <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
+    <asp:Button runat="server" ID="toFrontPage" Text="Front Page" CssClass="button" OnClick="toFrontPage_Click"/>
+    <asp:Button runat="server" ID="toCheckOut" Text="Check out" CssClass="button" OnClick="toCheckOut_Click"/>
+
         <h1 class="steam">Steam</h1><br/>
         
         <p>On this page you'll find all games that are considered MMORPG's.</p><br/>

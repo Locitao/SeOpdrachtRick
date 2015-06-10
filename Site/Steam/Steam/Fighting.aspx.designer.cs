@@ -13,13 +13,13 @@ namespace Steam {
     public partial class Fighting {
         
         /// <summary>
-        /// form1 control.
+        /// formFighting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formFighting;
         
         /// <summary>
         /// btnLogin control.
@@ -29,6 +29,24 @@ namespace Steam {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
+        
+        /// <summary>
+        /// toFrontPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button toFrontPage;
+        
+        /// <summary>
+        /// toCheckOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button toCheckOut;
         
         /// <summary>
         /// mmo control.
@@ -58,13 +76,13 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.Button fights;
         
         /// <summary>
-        /// lbMmorpg control.
+        /// lbFighting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbMmorpg;
+        protected global::System.Web.UI.WebControls.ListBox lbFighting;
         
         /// <summary>
         /// buy control.

@@ -11,6 +11,7 @@
 <body>
     <form id="checkout" runat="server">
         <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
+        <asp:Button runat="server" ID="toFrontPage" Text="Front Page" CssClass="button" OnClick="toFrontPage_Click"/>
     <h1 class="steam">Steam</h1><br/>
     <p>This is your shopping cart. If you want to purchase the games displayed; click the "buy" button.</p><br/>
 

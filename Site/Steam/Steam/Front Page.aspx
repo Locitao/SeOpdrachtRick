@@ -11,6 +11,8 @@
     
     <form id="mainForm" runat="server">
         <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
+        <asp:Button runat="server" ID="checkout" CssClass="button" Text="Checkout" OnClick="checkout_Click"/>
+
         <h1 class="steam">Steam</h1><br/>
         <!--<asp:Button CssClass="button" ID="btnTestConnection" runat="server" Text="Test database connection" OnClick="btnTestConnection_Click" />
         <asp:Label ID="lblTest" runat="server" Text="Komt hier shit?"></asp:Label>-->

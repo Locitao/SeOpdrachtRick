@@ -21,7 +21,8 @@ namespace Steam
         public Select select = new Select();
         public Update update = new Update();
         public List<Game> games = new List<Game>();
-        public List<Category> categories = new List<Category>(); 
+        public List<Category> categories = new List<Category>();
+        public List<Game> shoppingCart = new List<Game>(); 
 
         /// <summary>
         /// Used to login as a user. Returns an instance of Account when the account is found in the database.

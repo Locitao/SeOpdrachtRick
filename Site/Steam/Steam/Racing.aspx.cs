@@ -10,20 +10,20 @@ namespace Steam
 {
     public partial class Racing : System.Web.UI.Page
     {
-        Administration admin = new Administration();
-        List<Game> racegames = new List<Game>();
-        List<Game> shoppingCart = new List<Game>(); 
+        readonly Administration admin = new Administration();
+        readonly List<Game> racegames = new List<Game>();
+        private Account acc;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)
             {
                 Account acc = (Account)Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
             else if (Session["newAccount"] != null)
             {
                 Account acc = (Account)Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
 
             if (Session["Games"] == null)
@@ -41,7 +41,7 @@ namespace Steam
 
             if (Session["cart"] != null)
             {
-                shoppingCart = (List<Game>) Session["cart"];
+                admin.shoppingCart = (List<Game>) Session["cart"];
             }
 
             
@@ -87,5 +87,44 @@ namespace Steam
         {
             Response.Redirect("Fighting.aspx");
         }
+
+        protected void buy_Click(object sender, EventArgs e)
+        {
+            if (acc == null)
+            {
+                Page home = HttpContext.Current.Handler as Page;
+                if (home != null)
+                {
+                    ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('You need to log in first.');window.location='Signup.aspx';", true);
+                }
+            }
+
+            if (lbRacing.SelectedValue == null)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('If you want to purchase a game, select one in the list!')", true);
+            }
+
+            else
+            {
+                var gameText = lbRacing.SelectedValue;
+                foreach (var s in racegames.Where(s => s.ToString() == gameText))
+                {
+                    admin.shoppingCart.Add(s);
+                    Session["cart"] = admin.shoppingCart;
+                }
+            }
+        }
+
+        protected void toFrontPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Front Page.aspx");
+        }
+
+        protected void toCheckOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
+        }
+
+
     }
 }

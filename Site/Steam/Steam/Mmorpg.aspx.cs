@@ -9,21 +9,21 @@ namespace Steam
 {
     public partial class Mmorpg : System.Web.UI.Page
     {
-        Administration admin = new Administration();
-        List<Game> mmorpgs = new List<Game>();
-        List<Game> shoppingCart = new List<Game>();
+        readonly Administration admin = new Administration();
+        readonly List<Game> mmorpgs = new List<Game>();
         private Account acc;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)
             {
-                Account acc = (Account)Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                acc = (Account)Session["UserData"];
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
             else if (Session["newAccount"] != null)
             {
-                Account acc = (Account)Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                acc = (Account)Session["newAccount"];
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
 
             if (Session["Games"] == null)
@@ -41,7 +41,7 @@ namespace Steam
 
             if (Session["cart"] != null)
             {
-                shoppingCart = (List<Game>)Session["cart"];
+                admin.shoppingCart = (List<Game>)Session["cart"];
             }
         }
 
@@ -96,6 +96,11 @@ namespace Steam
             Response.Redirect("Racing.aspx");
         }
 
+        protected void fighting_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Fighting.aspx");
+        }
+
         protected void buy_Click(object sender, EventArgs e)
         {
             if (acc == null)
@@ -113,13 +118,27 @@ namespace Steam
             }
             else
             {
-                var gameText = lbMmorpg.SelectedValue;
+                //string gameText = lbMmorpg.SelectedItem.ToString(); //null
+                //string gameText = String.Join(", ",
+                  //  lbMmorpg.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => i.Value)); //empty string
+                string gameText = lbMmorpg.SelectedValue; //null
+
                 foreach (var s in mmorpgs.Where(s => s.ToString() == gameText))
                 {
-                    shoppingCart.Add(s);
-                    Session["cart"] = shoppingCart;
+                    admin.shoppingCart.Add(s);
+                    Session["cart"] = admin.shoppingCart;
                 }
             }
+        }
+
+        protected void toFrontPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Front Page.aspx");
+        }
+
+        protected void toCheckOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
         }
     }
 }

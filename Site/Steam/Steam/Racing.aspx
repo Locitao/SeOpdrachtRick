@@ -10,6 +10,8 @@
 <body>
     <form id="formRacing" runat="server">
     <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" />
+    <asp:Button runat="server" ID="toFrontPage" Text="Front Page" CssClass="button" OnClick="toFrontPage_Click"/>
+        <asp:Button runat="server" ID="toCheckOut" Text="Check out" CssClass="button" OnClick="toCheckOut_Click"/>
         <h1 class="steam">Steam</h1><br/>
         
         <p>On this page you'll find all games that are considered MMORPG's.</p><br/>
@@ -21,7 +23,7 @@
         <div class="listboxes">
         <asp:ListBox ID="lbRacing" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
         </div>
-        <asp:Button runat="server" ID="buy" CssClass="button" Text="Buy this game!"/>
+        <asp:Button runat="server" ID="buy" CssClass="button" Text="Buy this game!" OnClick="buy_Click"/>
     </form>
 </body>
 </html>

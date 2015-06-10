@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up" OnClick="btnLogin_Click"/>
+    <form id="formFighting" runat="server">
+    <asp:Button runat="server" ID="btnLogin" CssClass="button" Text="Log in/Sign up"/>
+    <asp:Button runat="server" ID="toFrontPage" Text="Front Page" CssClass="button" OnClick="toFrontPage_Click"/>
+    <asp:Button runat="server" ID="toCheckOut" Text="Check out" CssClass="button" OnClick="toCheckOut_Click"/>
         <h1 class="steam">Steam</h1><br/>
         
         <p>On this page you'll find all games that are considered MMORPG's.</p><br/>
         <div class="buttons">
-        <asp:Button runat="server" ID="mmo" CssClass="button" Text="MMORPG" OnClick="mmo_Click"/><br/>
-        <asp:Button runat="server" ID="racing" CssClass="button" Text="Racing" OnClick="racing_Click"/><br/>
-        <asp:Button runat="server" ID="fights" CssClass="button" Text="Fighting"/>
+            <asp:Button runat="server" ID="mmo" CssClass="button" Text="MMORPG"/><br/>
+            <asp:Button runat="server" ID="racing" CssClass="button" Text="Racing"/><br/>
+            <asp:Button runat="server" ID="fights" CssClass="button" Text="Fighting"/>
         </div>
         <div class="listboxes">
-        <asp:ListBox ID="lbMmorpg" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
+            <asp:ListBox ID="lbFighting" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
         </div>
         <asp:Button runat="server" ID="buy" CssClass="button" Text="Buy this game!"/>
     </form>

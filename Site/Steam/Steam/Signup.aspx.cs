@@ -11,7 +11,7 @@ namespace Steam
     public partial class Signup : System.Web.UI.Page
     {
         
-        Account acc = new Account(2, "test", "test", "email", "10/10/1980", 0);
+        
         Administration admin = new Administration();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace Steam
            Response.Cookies.Add(userCookie);
            Response.Write(Request.Cookies["UserData"].Value);
             */
-            Session["UserData"] = acc;
+            
         }
         /// <summary>
         /// Button is used to create an account.

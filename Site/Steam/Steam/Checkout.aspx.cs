@@ -123,5 +123,10 @@ namespace Steam
                 }
             }
         }
+
+        protected void toFrontPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Front Page.aspx");
+        }
     }
 }

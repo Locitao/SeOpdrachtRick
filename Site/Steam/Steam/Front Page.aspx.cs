@@ -19,12 +19,12 @@ namespace Steam
             if (Session["UserData"] != null)
             {
                 Account acc = (Account)Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
             else if (Session["newAccount"] != null)
             {
                 Account acc = (Account)Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
 
             if (Session["Games"] == null)
@@ -74,6 +74,11 @@ namespace Steam
         protected void mmorpg_Click(object sender, EventArgs e)
         {
             Response.Redirect("Mmorpg.aspx");
+        }
+
+        protected void checkout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
         }
     }
 }
