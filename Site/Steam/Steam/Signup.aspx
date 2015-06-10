@@ -25,7 +25,9 @@
             <asp:Textbox ID="tbBirthdate" CssClass="textbox" runat="server"></asp:Textbox><br/>
             <asp:Textbox ID="tbSignupPassword" CssClass="textbox" runat="server" TextMode="Password"></asp:Textbox>
         </div>
+        
         <div id="loginstuff">
+            <h1>Log in</h1>
             <div id ="login">
                 <p class="lblText">E-mail address:</p><br/>
                 <p class="lblText">Password:</p><br/>

@@ -13,6 +13,12 @@ namespace Steam
         readonly List<Game> mmorpgs = new List<Game>();
         private Account acc;
 
+        /// <summary>
+        /// During the loading of the page, a check takes place to see if the user is logged in. It also fills the listbox with the appropriate
+        /// items.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)
@@ -101,6 +107,11 @@ namespace Steam
             Response.Redirect("Fighting.aspx");
         }
 
+        /// <summary>
+        /// Event handler for purchasing the selected game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void buy_Click(object sender, EventArgs e)
         {
             if (acc == null)

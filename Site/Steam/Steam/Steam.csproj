@@ -136,6 +136,7 @@
     <Compile Include="Racing.aspx.designer.cs">
       <DependentUpon>Racing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Review.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
