@@ -13,13 +13,13 @@ namespace Steam {
     public partial class Racing {
         
         /// <summary>
-        /// form1 control.
+        /// formRacing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formRacing;
         
         /// <summary>
         /// btnLogin control.
@@ -58,13 +58,13 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.Button fighting;
         
         /// <summary>
-        /// lbMmorpg control.
+        /// lbRacing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbMmorpg;
+        protected global::System.Web.UI.WebControls.ListBox lbRacing;
         
         /// <summary>
         /// buy control.

@@ -79,6 +79,7 @@ namespace Steam
         /// </summary>
         protected void Fill_Listbox()
         {
+            lbMmorpg.Items.Clear();
             foreach (var g in mmorpgs)
             {
                 lbMmorpg.Items.Add(g.ToString());
@@ -97,13 +98,22 @@ namespace Steam
 
         protected void buy_Click(object sender, EventArgs e)
         {
-            if (lbMmorpg.SelectedItem == null)
+            if (acc == null)
+            {
+                Page home = HttpContext.Current.Handler as Page;
+                if (home != null)
+                {
+                    ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('You need to log in first.');window.location='Signup.aspx';", true);
+                }
+            }
+
+            if (lbMmorpg.SelectedValue == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('If you want to purchase a game, select one in the list!')", true);
             }
             else
             {
-                var gameText = lbMmorpg.SelectedItem.Text;
+                var gameText = lbMmorpg.SelectedValue;
                 foreach (var s in mmorpgs.Where(s => s.ToString() == gameText))
                 {
                     shoppingCart.Add(s);
