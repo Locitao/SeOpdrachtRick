@@ -144,6 +144,52 @@ namespace Steam
             }
         }
 
-        
+        public bool Increase_wallet(Account acc)
+        {
+            try
+            {
+                update.Increase_Wallet(acc.Balance, acc.Id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Decrease_Wallet(Account acc)
+        {
+            try
+            {
+                update.Decrease_Wallet(acc.Balance, acc.Id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public string Find_Reviews(int productId)
+        {
+            try
+            {
+                var data = select.Select_Reviews(productId);
+                string returndata = "";
+                foreach (Dictionary<string, object> row in data)
+                {
+                    string description = Convert.ToString(row["REV_DESCRIPTION"]);
+                    string rating = Convert.ToString(row["RATING"]);
+                    string name = select.Select_Account_Name(Convert.ToString(row["ACC_ID"]));
+                    returndata = returndata + name + ": " + rating + ", " + description + "<br />";
+                    
+                }
+                return returndata;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }

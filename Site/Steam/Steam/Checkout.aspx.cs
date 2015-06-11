@@ -17,12 +17,16 @@ namespace Steam
             if (Session["UserData"] != null)
             {
                 acc = (Account)Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + ".";
+                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance;
 
-                if (!IsPostBack)
-                {
-                    Fill_List();
-                }
+                if (IsPostBack) return;
+                Fill_List();
+                dropDownWallet.Items.Add("5");
+                dropDownWallet.Items.Add("10");
+                dropDownWallet.Items.Add("15");
+                dropDownWallet.Items.Add("20");
+                dropDownWallet.Items.Add("60");
+                dropDownWallet.Items.Add("100");
             }
             else if (Session["newAccount"] != null)
             {
@@ -51,6 +55,7 @@ namespace Steam
         {
             buying = (List<Game>)Session["cart"];
 
+            if (buying == null) return;
             foreach (var s in buying)
             {
                 lbCheckout.Items.Add(s.ToString());
@@ -101,6 +106,8 @@ namespace Steam
                     {
                         Buy_Games();
                         acc.Balance = acc.Balance - x;
+                        admin.Decrease_Wallet(acc);
+                        Session["UserData"] = acc;
                         Page home3 = HttpContext.Current.Handler as Page;
                         if (home3 != null)
                         {
@@ -132,6 +139,22 @@ namespace Steam
         protected void toFrontPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("Front Page.aspx");
+        }
+
+        protected void btnAddFunds_Click(object sender, EventArgs e)
+        {
+            if (dropDownWallet.SelectedItem == null)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Why would you want to add nothing to your wallet?')", true);
+            }
+
+            else
+            {
+                int funds = Convert.ToInt32(dropDownWallet.SelectedItem.Text);
+                acc.Balance = acc.Balance + funds;
+                Session["UserData"] = acc;
+                admin.Increase_wallet(acc);
+            }
         }
     }
 }

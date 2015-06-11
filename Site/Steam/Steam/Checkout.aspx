@@ -22,7 +22,10 @@
         <asp:RadioButton ID="rdPayPal" runat="server" Text="PayPal" GroupName="payment" />
         <asp:RadioButton ID="rdIdeal" runat="server" Text="iDeal" GroupName="payment" />
         <asp:RadioButton ID="rdWallet" runat="server" Text="Steam Wallet" GroupName="payment" />
-        <asp:Button runat="server" CssClass="button" ID="buy" Text="Buy these games." OnClick="buy_Click"/>
+        <asp:Button runat="server" CssClass="button" ID="buy" Text="Buy these games." OnClick="buy_Click"/><br />
+        
+        <asp:DropDownList ID="dropDownWallet" runat="server"></asp:DropDownList><br/>
+        <asp:Button runat="server" CssClass="button" Text="Add funds to wallet." ID="btnAddFunds" OnClick="btnAddFunds_Click"/>
 
     </form>
 </body>

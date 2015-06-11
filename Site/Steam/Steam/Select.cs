@@ -103,5 +103,34 @@ namespace Steam
             return data;
         }
 
+        public List<Dictionary<string, object>> Select_Reviews(int productId)
+        {
+            string sql = "SELECT * FROM REVIEW WHERE product_ID = '" + productId + "'";
+            var data = Connection.ExecuteQuery(sql);
+            return data;
+        }
+
+        public string Select_Account_Name(string accId)
+        {
+            try
+            {
+                string sql = "SELECT NAME_USER FROM USER_ACCOUNT WHERE ACC_ID = '" + accId + "'";
+                var data = Connection.ExecuteQuery(sql);
+
+                string returndata = "";
+                foreach (Dictionary<string, object> x in data)
+                {
+                    returndata = Convert.ToString(x["NAME_USER"]);
+                }
+
+                return returndata;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            
+        }
+
     }
 }

@@ -53,7 +53,7 @@ namespace Steam
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Name is too short.')", true);
 
             }
-            else if (tbSignupPassword.Text.Length < 5)
+            else if (tbSignupPassword.Text.Length < 4 || tbSignupPassword.Text == "penis") //small easter egg 
             {
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Password is too short.')", true);
 

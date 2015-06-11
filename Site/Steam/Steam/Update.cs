@@ -17,10 +17,7 @@ namespace Steam
         {
             try
             {
-                int balance = _select.Select_Wallet(accId);
-                balance = balance + money;
-            
-                string query = "UPDATE USER_ACCOUNT SET steam_balance = '" + balance + "' WHERE acc_ID = '" + accId + "'";
+                string query = "UPDATE USER_ACCOUNT SET steam_balance = '" + money + "' WHERE acc_ID = '" + accId + "'";
                 _conn.Execute(query);
                 const string succes = "Saldo added";
                 return succes;
@@ -35,10 +32,7 @@ namespace Steam
         {
             try
             {
-                int balance = _select.Select_Wallet(accId);
-                balance = balance - money;
-
-                string query = "UPDATE USER_ACCOUNT SET steam_balance = '" + balance + "' WHERE acc_ID = '" + accId + "'";
+                string query = "UPDATE USER_ACCOUNT SET steam_balance = '" + money + "' WHERE acc_ID = '" + accId + "'";
                 _conn.Execute(query);
                 const string succes = "Saldo added";
                 return succes;

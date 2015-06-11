@@ -157,5 +157,30 @@ namespace Steam
         {
             Response.Redirect("Checkout.aspx");
         }
+
+        protected void Fill_Reviews(int productId)
+        {
+            string reviews = admin.Find_Reviews(productId);
+            lblReviews.Text = reviews;
+        }
+
+        protected void lbMmorpg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void reviews_Click(object sender, EventArgs e)
+        {
+            int productid = 0;
+
+            string gameText = lbMmorpg.SelectedValue;
+
+            foreach (var s in mmorpgs.Where(s => s.ToString() == gameText))
+            {
+                productid = s.GameId;
+            }
+
+            Fill_Reviews(productid);
+        }
     }
 }
