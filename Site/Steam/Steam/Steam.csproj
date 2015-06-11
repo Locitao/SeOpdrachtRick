@@ -67,7 +67,6 @@
     <Content Include="Fighting.aspx" />
     <Content Include="Mmorpg.aspx" />
     <Content Include="Racing.aspx" />
-    <Content Include="Steam.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -144,13 +143,6 @@
     </Compile>
     <Compile Include="Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Steam.Master.cs">
-      <DependentUpon>Steam.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Steam.Master.designer.cs">
-      <DependentUpon>Steam.Master</DependentUpon>
     </Compile>
     <Compile Include="Update.cs" />
   </ItemGroup>

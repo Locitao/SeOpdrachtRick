@@ -103,6 +103,11 @@ namespace Steam
             return data;
         }
 
+        /// <summary>
+        /// Finds all reviews belonging to a product.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         public List<Dictionary<string, object>> Select_Reviews(int productId)
         {
             string sql = "SELECT * FROM REVIEW WHERE product_ID = '" + productId + "'";
@@ -110,6 +115,11 @@ namespace Steam
             return data;
         }
 
+        /// <summary>
+        /// Finds just the name belonging to the account with the given ID.
+        /// </summary>
+        /// <param name="accId"></param>
+        /// <returns></returns>
         public string Select_Account_Name(string accId)
         {
             try
@@ -132,6 +142,11 @@ namespace Steam
             
         }
 
+        /// <summary>
+        /// Finds all games one user has added to their library.
+        /// </summary>
+        /// <param name="accId"></param>
+        /// <returns></returns>
         public List<Dictionary<string, object>> Select_Games_User(int accId)
         {
             try

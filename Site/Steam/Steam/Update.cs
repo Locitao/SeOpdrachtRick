@@ -11,8 +11,13 @@ namespace Steam
     public class Update
     {
         readonly Connection _conn = new Connection();
-        readonly Select _select  = new Select();
-
+        
+        /// <summary>
+        /// Updates a users wallet (adds money).
+        /// </summary>
+        /// <param name="money"></param>
+        /// <param name="accId"></param>
+        /// <returns></returns>
         public string Increase_Wallet(int money, int accId)
         {
             try
@@ -28,6 +33,12 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Decreases a users' wallet.
+        /// </summary>
+        /// <param name="money"></param>
+        /// <param name="accId"></param>
+        /// <returns></returns>
         public string Decrease_Wallet(int money, int accId)
         {
             try

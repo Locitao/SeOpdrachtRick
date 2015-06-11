@@ -8,8 +8,14 @@ using Oracle.DataAccess;
 
 namespace Steam
 {
+    /// <summary>
+    /// This class is used to maintain/open/close the connection with the database.
+    /// </summary>
     public class Connection
     {
+        /// <summary>
+        /// Fields.
+        /// </summary>
         OracleConnection conn = new OracleConnection();
         private const string user = "system";
         private const string pw = "wachtwoord";
@@ -85,6 +91,10 @@ namespace Steam
             return result;
         }
 
+        /// <summary>
+        /// Executes a given query on the database.
+        /// </summary>
+        /// <param name="sql"></param>
         public void Execute(string sql)
         {
             string query = sql;

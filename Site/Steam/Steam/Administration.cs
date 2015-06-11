@@ -106,6 +106,10 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Fills the list of games with all games from the database.
+        /// </summary>
+        /// <returns></returns>
         public bool Fill_Games()
         {
             try
@@ -131,6 +135,12 @@ namespace Steam
             
         }
 
+        /// <summary>
+        /// Add a game to an account, and inserts it into the database.
+        /// </summary>
+        /// <param name="accId"></param>
+        /// <param name="gameId"></param>
+        /// <returns></returns>
         public bool Add_Game(int accId, int gameId)
         {
             try
@@ -144,6 +154,11 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Add funds to the wallet of the selected account.
+        /// </summary>
+        /// <param name="acc"></param>
+        /// <returns></returns>
         public bool Increase_wallet(Account acc)
         {
             try
@@ -157,6 +172,11 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Removes funds from the wallet of the account.
+        /// </summary>
+        /// <param name="acc"></param>
+        /// <returns></returns>
         public bool Decrease_Wallet(Account acc)
         {
             try
@@ -169,7 +189,11 @@ namespace Steam
                 return false;
             }
         }
-
+        /// <summary>
+        /// Finds the reviews belonging to the selected product.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         public string Find_Reviews(int productId)
         {
             try
@@ -192,6 +216,11 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Finds the games belonging to the given user.
+        /// </summary>
+        /// <param name="accId"></param>
+        /// <returns></returns>
         public List<Game> Find_Games(int accId)
         {
             List<Game> games = new List<Game>();

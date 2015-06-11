@@ -6,8 +6,14 @@ using System.Web.UI;
 
 namespace Steam
 {
+    /// <summary>
+    /// This class is used as a base to store instances of games which are collected from the database.
+    /// </summary>
     public class Game
     {
+        /// <summary>
+        /// Auto-properties.
+        /// </summary>
         public int GameId { get; set; }
 
         public int CategoryId { get; set; }

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Steam
 {
+    /// <summary>
+    /// To keep track of the collected reviews.
+    /// </summary>
     public class Review
     {
         public int Id { get; set; }
