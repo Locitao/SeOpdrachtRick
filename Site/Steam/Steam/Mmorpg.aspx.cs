@@ -61,6 +61,9 @@ namespace Steam
             Response.Redirect("Signup.aspx");
         }
 
+        /// <summary>
+        /// Puts all available games in a Session, to be used at my discretion.
+        /// </summary>
         protected void Session_Games()
         {
             admin.Fill_Games();
@@ -163,12 +166,21 @@ namespace Steam
             
         }
 
+        /// <summary>
+        /// Get's all the reviews belonging to a product, puts them in a listbox.
+        /// </summary>
+        /// <param name="productId"></param>
         protected void Fill_Reviews(int productId)
         {
             string allReviews = admin.Find_Reviews(productId);
             lblReviews.Text = allReviews;
         }
 
+        /// <summary>
+        /// Finds reviews and stuff.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void reviews_Click(object sender, EventArgs e)
         {
             int productid = 0;

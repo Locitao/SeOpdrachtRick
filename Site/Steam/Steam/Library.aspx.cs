@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Steam
 {
+    /// <summary>
+    /// This page is the users' library, from here they have an overview of which games they own, and they can install these.
+    /// </summary>
     public partial class Library : System.Web.UI.Page
     {
         readonly Administration admin = new Administration();

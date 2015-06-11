@@ -14,6 +14,7 @@ namespace Steam
         private List<Game> buying; 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Checks if the user is logged in; otherwise you're redirected to the log in page.
             if (Session["UserData"] != null)
             {
                 acc = (Account)Session["UserData"];
@@ -51,6 +52,9 @@ namespace Steam
             Response.Redirect("Signup.aspx");
         }
 
+        /// <summary>
+        /// Puts a list of the games you've got in your shopping cart, into the listbox.
+        /// </summary>
         protected void Fill_List()
         {
             buying = (List<Game>)Session["cart"];
@@ -62,6 +66,11 @@ namespace Steam
             }
         }
 
+        /// <summary>
+        /// Buys the games currently in the listbox. Checks which payment method is used and adjusts accordingly.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void buy_Click(object sender, EventArgs e)
         {
             admin.Fill_Games();
@@ -122,6 +131,9 @@ namespace Steam
             
         }
 
+        /// <summary>
+        /// Adds the games to the users' account.
+        /// </summary>
         protected void Buy_Games()
         {
             foreach (var x in buying)
@@ -141,6 +153,11 @@ namespace Steam
             Response.Redirect("Front Page.aspx");
         }
 
+        /// <summary>
+        /// Adds funds to the users' account (wallet).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnAddFunds_Click(object sender, EventArgs e)
         {
             if (dropDownWallet.SelectedItem == null)

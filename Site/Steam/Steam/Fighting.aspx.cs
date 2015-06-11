@@ -13,6 +13,7 @@ namespace Steam
         readonly List<Game> fightGames  = new List<Game>();
         private Account acc;
 
+        //Works exactly the same as Mmorpg page, check that one for full comments.
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)

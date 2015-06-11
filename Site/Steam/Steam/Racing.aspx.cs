@@ -13,6 +13,7 @@ namespace Steam
         readonly Administration admin = new Administration();
         readonly List<Game> racegames = new List<Game>();
         private Account acc;
+        //Same as Mmorpg, see comments there for details.
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)

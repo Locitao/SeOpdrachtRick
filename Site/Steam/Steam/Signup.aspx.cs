@@ -11,18 +11,12 @@ namespace Steam
     public partial class Signup : System.Web.UI.Page
     {
         
-        
+        /// <summary>
+        /// Used to log in, or create an account.
+        /// </summary>
         Administration admin = new Administration();
         protected void Page_Load(object sender, EventArgs e)
         {
-           /*
-           HttpCookie userCookie = new HttpCookie("UserData");
-           userCookie["Name"] = "testname";
-           userCookie["Password"] = "test";
-           userCookie.Expires = DateTime.Now.AddDays(30);
-           Response.Cookies.Add(userCookie);
-           Response.Write(Request.Cookies["UserData"].Value);
-            */
             
         }
         /// <summary>
@@ -32,13 +26,6 @@ namespace Steam
         /// <param name="e"></param>
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            /*
-            Page home = HttpContext.Current.Handler as Page;
-            if (home != null)
-            {
-              ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('Thank you for signing up. You can now login.');window.location='Front Page.aspx';", true);  
-            }
-             */
             //Some simple validation of user data.
             if (tbBirthdate.Text.Length < 4)
             {
