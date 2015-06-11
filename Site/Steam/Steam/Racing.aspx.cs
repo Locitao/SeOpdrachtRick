@@ -26,9 +26,15 @@ namespace Steam
                 btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
 
-            if (Session["Games"] == null)
+            if (Session["Games"] == null && !IsPostBack)
             {
                 Session_Games();
+                Fill_Racing();
+                Fill_Listbox();
+            }
+
+            else if (!IsPostBack)
+            {
                 Fill_Racing();
                 Fill_Listbox();
             }
@@ -36,7 +42,6 @@ namespace Steam
             else
             {
                 Fill_Racing();
-                Fill_Listbox();
             }
 
             if (Session["cart"] != null)
@@ -45,6 +50,11 @@ namespace Steam
             }
 
             
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Signup.aspx");
         }
 
         protected void Session_Games()
@@ -106,7 +116,7 @@ namespace Steam
 
             else
             {
-                var gameText = lbRacing.SelectedValue;
+                string gameText = lbRacing.SelectedValue;
                 foreach (var s in racegames.Where(s => s.ToString() == gameText))
                 {
                     admin.shoppingCart.Add(s);

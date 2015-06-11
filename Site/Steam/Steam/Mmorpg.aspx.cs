@@ -32,9 +32,15 @@ namespace Steam
                 btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
             }
 
-            if (Session["Games"] == null)
+            if (Session["Games"] == null && !IsPostBack)
             {
                 Session_Games();
+                Fill_Mmorpg();
+                Fill_Listbox();
+            }
+
+            else if (!IsPostBack)
+            {
                 Fill_Mmorpg();
                 Fill_Listbox();
             }
@@ -42,7 +48,6 @@ namespace Steam
             else
             {
                 Fill_Mmorpg();
-                Fill_Listbox();
             }
 
             if (Session["cart"] != null)
@@ -59,6 +64,7 @@ namespace Steam
         protected void Session_Games()
         {
             admin.Fill_Games();
+            Session["Games"] = null;
             Session["Games"] = admin.games;
         }
 

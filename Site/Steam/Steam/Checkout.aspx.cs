@@ -16,12 +16,17 @@ namespace Steam
         {
             if (Session["UserData"] != null)
             {
-                Account acc = (Account)Session["UserData"];
+                acc = (Account)Session["UserData"];
                 btnLogin.Text = "Welcome " + acc.Name + ".";
+
+                if (!IsPostBack)
+                {
+                    Fill_List();
+                }
             }
             else if (Session["newAccount"] != null)
             {
-                Account acc = (Account) Session["newAccount"];
+                acc = (Account) Session["newAccount"];
                 btnLogin.Text = "Welcome " + acc.Name + ".";
             }
 
