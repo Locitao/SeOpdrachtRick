@@ -40,6 +40,15 @@ namespace Steam {
         protected global::System.Web.UI.WebControls.Button checkout;
         
         /// <summary>
+        /// btnLibrary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLibrary;
+        
+        /// <summary>
         /// btnTestConnection control.
         /// </summary>
         /// <remarks>

@@ -158,15 +158,15 @@ namespace Steam
             Response.Redirect("Checkout.aspx");
         }
 
-        protected void Fill_Reviews(int productId)
-        {
-            string reviews = admin.Find_Reviews(productId);
-            lblReviews.Text = reviews;
-        }
-
         protected void lbMmorpg_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        protected void Fill_Reviews(int productId)
+        {
+            string allReviews = admin.Find_Reviews(productId);
+            lblReviews.Text = allReviews;
         }
 
         protected void reviews_Click(object sender, EventArgs e)

@@ -135,6 +135,26 @@ namespace Steam
             Response.Redirect("Checkout.aspx");
         }
 
+        protected void Fill_Reviews(int productId)
+        {
+            string allReviews = admin.Find_Reviews(productId);
+            lblReviews.Text = allReviews;
+        }
+
+        protected void reviews_Click(object sender, EventArgs e)
+        {
+            int productid = 0;
+
+            string gameText = lbRacing.SelectedValue;
+
+            foreach (var s in racegames.Where(s => s.ToString() == gameText))
+            {
+                productid = s.GameId;
+            }
+
+            Fill_Reviews(productid);
+        }
+
 
     }
 }

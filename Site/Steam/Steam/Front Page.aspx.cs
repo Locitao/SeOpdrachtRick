@@ -80,5 +80,10 @@ namespace Steam
         {
             Response.Redirect("Checkout.aspx");
         }
+
+        protected void btnLibrary_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Library.aspx");
+        }
     }
 }

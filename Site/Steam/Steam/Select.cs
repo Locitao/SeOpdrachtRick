@@ -132,5 +132,21 @@ namespace Steam
             
         }
 
+        public List<Dictionary<string, object>> Select_Games_User(int accId)
+        {
+            try
+            {
+                string sql =
+                    "SELECT * FROM PRODUCT WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM AC_LIBRARY WHERE ACC_ID = '" +
+                    accId + "')";
+                var data = Connection.ExecuteQuery(sql);
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

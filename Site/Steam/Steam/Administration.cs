@@ -191,5 +191,26 @@ namespace Steam
                 return ex.Message;
             }
         }
+
+        public List<Game> Find_Games(int accId)
+        {
+            List<Game> games = new List<Game>();
+
+            var data = select.Select_Games_User(accId);
+
+            foreach (var s in data)
+            {
+                int gameid = Convert.ToInt32(s["PRODUCT_ID"]);
+                int categoryid = Convert.ToInt32(s["CATEGORY_ID"]);
+                string description = Convert.ToString(s["PR_DESCRIPTION"]);
+                string name = Convert.ToString(s["PR_NAME"]);
+                int price = Convert.ToInt32(s["PRICE"]);
+
+                Game g = new Game(gameid, categoryid, description, name, price);
+                games.Add(g);
+            }
+
+            return games;
+        }
     }
 }

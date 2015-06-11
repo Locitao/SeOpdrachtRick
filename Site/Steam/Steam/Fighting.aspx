@@ -24,6 +24,8 @@
             <asp:ListBox ID="lbFighting" CssClass="listbox" runat="server" Height="200px" Width="400px"></asp:ListBox>
         </div>
         <asp:Button runat="server" ID="buy" CssClass="button" Text="Buy this game!"/>
+        <asp:Button runat="server" ID="reviews" CssClass="button" Text="Find reviews for selected game." OnClick="reviews_Click"/>
+        <asp:Label ID="lblReviews" runat="server" Text=""></asp:Label>
     </form>
 </body>
 </html>
