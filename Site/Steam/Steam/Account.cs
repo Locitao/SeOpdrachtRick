@@ -1,38 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Steam
 {
     /// <summary>
-    /// This class will be used to save an instance of an account, to use in the application.
+    ///     This class will be used to save an instance of an account, to use in the application.
     /// </summary>
     [Serializable]
     public class Account
     {
         /// <summary>
-        /// Fields.
+        ///     Fields.
         /// </summary>
-        private int id;
-        private string name;
-        private string password;
-        private string email;
-        private string birthdate;
-        private int balance;
+        private int _balance;
+        private string _birthdate;
+        private string _email;
+        private int _id;
+        private string _name;
+        private string _password;
 
         /// <summary>
-        /// Properties.
-        /// </summary>
-        public int Id { get { return id; } set { id = value; } }
-        public string Name { get { return name; } set { name = value; } }
-        public string Password { get { return password; } set { password = value; } }
-        public string Email { get { return email; } set { email = value; } }
-        public string Birthdate { get { return birthdate; } set { birthdate = value; } }
-        public int Balance { get { return balance; } set { balance = value; } }
-
-        /// <summary>
-        /// Constructor, based on the ACCOUNT table from the database.
+        ///     Constructor, based on the ACCOUNT table from the database.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
@@ -57,13 +44,53 @@ namespace Steam
             Email = email;
             Birthdate = birthdate;
         }
+
         /// <summary>
-        /// ToString method returns information about the account.
+        ///     Properties.
+        /// </summary>
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
+        public string Birthdate
+        {
+            get { return _birthdate; }
+            set { _birthdate = value; }
+        }
+
+        public int Balance
+        {
+            get { return _balance; }
+            set { _balance = value; }
+        }
+
+        /// <summary>
+        ///     ToString method returns information about the account.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            string data = Convert.ToString(Id) + ", " + Name + ", " + Email + ", " + Convert.ToString(Birthdate) + ".";
+            var data = Convert.ToString(Id) + ", " + Name + ", " + Email + ", " + Convert.ToString(Birthdate) + ".";
             return data;
         }
     }

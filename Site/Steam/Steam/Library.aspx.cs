@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Steam
 {
     /// <summary>
-    /// This page is the users' library, from here they have an overview of which games they own, and they can install these.
+    ///     This page is the users' library, from here they have an overview of which games they own, and they can install
+    ///     these.
     /// </summary>
-    public partial class Library : System.Web.UI.Page
+    public partial class Library : Page
     {
-        readonly Administration admin = new Administration();
-        List<Game> libGames  = new List<Game>();
-        private Account acc;
+        private readonly Administration _admin = new Administration();
+        private Account _acc;
+        private List<Game> _libGames = new List<Game>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserData"] != null)
             {
-                acc = (Account) Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
+                _acc = (Account) Session["UserData"];
+                btnLogin.Text = "Welcome " + _acc.Name + " €" + _acc.Balance + ".";
 
                 if (!IsPostBack)
                 {
@@ -30,8 +29,8 @@ namespace Steam
             }
             else if (Session["newAccount"] != null)
             {
-                acc = (Account) Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
+                _acc = (Account) Session["newAccount"];
+                btnLogin.Text = "Welcome " + _acc.Name + " €" + _acc.Balance + ".";
 
                 if (!IsPostBack)
                 {
@@ -40,14 +39,13 @@ namespace Steam
             }
 
 
-
             else
             {
-                Page home = HttpContext.Current.Handler as Page;
+                var home = HttpContext.Current.Handler as Page;
                 if (home != null)
                 {
                     ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg",
-                    "alert('You need to log in first!');window.location='Signup.aspx';", true);
+                        "alert('You need to log in first!');window.location='Signup.aspx';", true);
                 }
             }
         }
@@ -69,25 +67,18 @@ namespace Steam
 
         protected void Fill_List()
         {
-            try
-            {
-                libGames = admin.Find_Games(acc.Id);
+            _libGames = _admin.Find_Games(_acc.Id);
 
-                foreach (var g in libGames)
-                {
-                    lbGames.Items.Add(g.ToString());
-                }
-            }
-            catch (Exception)
+            foreach (var g in _libGames)
             {
-                throw;
+                lbGames.Items.Add(g.ToString());
             }
-            
         }
 
         protected void Install_Game()
         {
-            ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('Game succesfully installed.')", true);
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage",
+                "alert('Game succesfully installed.')", true);
         }
 
         protected void btnInstall_Click(object sender, EventArgs e)

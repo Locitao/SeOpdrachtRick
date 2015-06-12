@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <form id="signUp" runat="server">
+<form id="signUp" runat="server">
     <div id="signup">
         <h1>Create account.</h1>
         <div id="text">
@@ -16,7 +16,7 @@
             <p class="lblText">E-mail address:</p><br/>
             <p class="lblText">Birthdate(format: day/month/year):</p><br/>
             <p class="lblText">Password:</p><br/>
-            
+
 
         </div>
         <div id="textBoxes">
@@ -25,10 +25,10 @@
             <asp:Textbox ID="tbBirthdate" CssClass="textbox" runat="server"></asp:Textbox><br/>
             <asp:Textbox ID="tbSignupPassword" CssClass="textbox" runat="server" TextMode="Password"></asp:Textbox>
         </div>
-        
+
         <div id="loginstuff">
             <h1>Log in</h1>
-            <div id ="login">
+            <div id="login">
                 <p class="lblText">E-mail address:</p><br/>
                 <p class="lblText">Password:</p><br/>
             </div>
@@ -37,16 +37,13 @@
                 <asp:TextBox ID="tbLoginPassword" CssClass="textbox" runat="server" TextMode="Password"></asp:TextBox><br/>
             </div>
             <br/><asp:Button runat="server" CssClass="button" ID="btnLogin" Text="Log in" OnClick="btnLogin_Click"/>
-            
+
         </div>
 
-        <br/><asp:Button CssClass="button" ID="btnCreate" runat="server" Text="Create account" OnClick="btnCreate_Click" />
+        <br/><asp:Button CssClass="button" ID="btnCreate" runat="server" Text="Create account" OnClick="btnCreate_Click"/>
     </div>
-        
 
-        
-        
 
-    </form>
+</form>
 </body>
 </html>

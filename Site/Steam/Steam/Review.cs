@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Steam
+﻿namespace Steam
 {
     /// <summary>
-    /// To keep track of the collected reviews.
+    ///     To keep track of the collected reviews.
     /// </summary>
     public class Review
     {
-        public int Id { get; set; }
-        public string Description { get; set; }
-        public int Rating { get; set; }
-        public int AccId { get; set; }
-        public int ProductId { get; set; }
-
         public Review(int id, string description, int rating, int accId, int productId)
         {
             Id = id;
@@ -24,5 +13,11 @@ namespace Steam
             AccId = accId;
             ProductId = productId;
         }
+
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public int Rating { get; set; }
+        public int AccId { get; set; }
+        public int ProductId { get; set; }
     }
 }

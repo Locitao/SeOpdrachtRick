@@ -10,7 +10,7 @@
 namespace Steam {
     
     
-    public partial class Front_Page {
+    public partial class FrontPage {
         
         /// <summary>
         /// mainForm control.

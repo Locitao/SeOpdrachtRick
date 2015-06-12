@@ -1,49 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Net;
-using System.Web;
-
 
 namespace Steam
 {
     /// <summary>
-    /// This class is the backbone of the application, doing all the heavy lifting.
+    ///     This class is the backbone of the application, doing all the heavy lifting.
     /// </summary>
     public class Administration
     {
         /// <summary>
-        /// Fields/properties.
+        ///     Fields/properties.
         /// </summary>
-        public Account account;
-        public Insert insert = new Insert();
-        public Select select = new Select();
-        public Update update = new Update();
-        public List<Game> games = new List<Game>();
-        public List<Category> categories = new List<Category>();
-        public List<Game> shoppingCart = new List<Game>(); 
+        public Account Account;
+
+        public List<Category> Categories = new List<Category>();
+        public List<Game> Games = new List<Game>();
+        public Insert Insert = new Insert();
+        public Select Select = new Select();
+        public List<Game> ShoppingCart = new List<Game>();
+        public Update Update = new Update();
 
         /// <summary>
-        /// Used to login as a user. Returns an instance of Account when the account is found in the database.
+        ///     Used to login as a user. Returns an instance of Account when the account is found in the database.
         /// </summary>
         /// <param name="email">Email of the user who wants to log in.</param>
         /// <param name="password">Password of the user who wants to log in.</param>
         /// <returns></returns>
         public Account Login(string email, string password)
         {
-            try
-            {
-                int id = 0;
-                string name = "tempname";
-                string pw = "temppw";
-                string mail = "tempmail";
-                string birthdate = "tempDate";
-                int balance = 0;
+                var id = 0;
+                var name = "tempname";
+                var pw = "temppw";
+                var mail = "tempmail";
+                var birthdate = "tempDate";
+                var balance = 0;
 
-                var data = select.Select_Account(email, password);
+                var data = Select.Select_Account(email, password);
 
-                foreach (Dictionary<string, object> row in data)
+                foreach (var row in data)
                 {
                     id = Convert.ToInt32(row["ACC_ID"]);
                     name = Convert.ToString(row["NAME_USER"]);
@@ -53,40 +48,31 @@ namespace Steam
                     balance = Convert.ToInt32(row["STEAM_BALANCE"]);
                 }
 
-                account = new Account(id, name, pw, mail, birthdate, balance);
-                return account;
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+                Account = new Account(id, name, pw, mail, birthdate, balance);
+                return Account;
             
             
-            
-            
-
         }
+
         /// <summary>
-        /// Returns information of the account that is currently selected.
+        ///     Returns information of the account that is currently selected.
         /// </summary>
         /// <returns>Account data</returns>
         public string Get_Account_Data()
         {
             try
             {
-                string data = account.ToString();
+                var data = Account.ToString();
                 return data;
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
-            
         }
 
         /// <summary>
-        /// Inserts an account into the database with the insert class.
+        ///     Inserts an account into the database with the insert class.
         /// </summary>
         /// <param name="name">Name for the account holder.</param>
         /// <param name="email">Email of the account holder.</param>
@@ -97,7 +83,7 @@ namespace Steam
         {
             try
             {
-                insert.Insert_Account(name, password, email, birthdate);
+                Insert.Insert_Account(name, password, email, birthdate);
                 return true;
             }
             catch (Exception)
@@ -107,24 +93,24 @@ namespace Steam
         }
 
         /// <summary>
-        /// Fills the list of games with all games from the database.
+        ///     Fills the list of games with all games from the database.
         /// </summary>
         /// <returns></returns>
         public bool Fill_Games()
         {
             try
             {
-                var data = select.Select_All_Games();
+                var data = Select.Select_All_Games();
 
-                foreach (Dictionary<string, object> row in data)
+                foreach (var row in data)
                 {
                     var gameId = Convert.ToInt32(row["PRODUCT_ID"]);
                     var categoryId = Convert.ToInt32(row["CATEGORY_ID"]);
                     var name = Convert.ToString(row["PR_NAME"]);
                     var price = Convert.ToInt32(row["PRICE"]);
                     var description = Convert.ToString(row["PR_DESCRIPTION"]);
-                    Game game = new Game(gameId, categoryId, description, name, price);
-                    games.Add(game);
+                    var game = new Game(gameId, categoryId, description, name, price);
+                    Games.Add(game);
                 }
                 return true;
             }
@@ -132,11 +118,10 @@ namespace Steam
             {
                 return false;
             }
-            
         }
 
         /// <summary>
-        /// Add a game to an account, and inserts it into the database.
+        ///     Add a game to an account, and inserts it into the database.
         /// </summary>
         /// <param name="accId"></param>
         /// <param name="gameId"></param>
@@ -145,7 +130,7 @@ namespace Steam
         {
             try
             {
-                var x = insert.Insert_Library(accId, gameId);
+                Insert.Insert_Library(accId, gameId);
                 return true;
             }
             catch (Exception)
@@ -155,7 +140,7 @@ namespace Steam
         }
 
         /// <summary>
-        /// Add funds to the wallet of the selected account.
+        ///     Add funds to the wallet of the selected account.
         /// </summary>
         /// <param name="acc"></param>
         /// <returns></returns>
@@ -163,7 +148,7 @@ namespace Steam
         {
             try
             {
-                update.Increase_Wallet(acc.Balance, acc.Id);
+                Update.Increase_Wallet(acc.Balance, acc.Id);
                 return true;
             }
             catch (Exception)
@@ -173,7 +158,7 @@ namespace Steam
         }
 
         /// <summary>
-        /// Removes funds from the wallet of the account.
+        ///     Removes funds from the wallet of the account.
         /// </summary>
         /// <param name="acc"></param>
         /// <returns></returns>
@@ -181,7 +166,7 @@ namespace Steam
         {
             try
             {
-                update.Decrease_Wallet(acc.Balance, acc.Id);
+                Update.Decrease_Wallet(acc.Balance, acc.Id);
                 return true;
             }
             catch (Exception)
@@ -189,8 +174,9 @@ namespace Steam
                 return false;
             }
         }
+
         /// <summary>
-        /// Finds the reviews belonging to the selected product.
+        ///     Finds the reviews belonging to the selected product.
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -198,15 +184,14 @@ namespace Steam
         {
             try
             {
-                var data = select.Select_Reviews(productId);
-                string returndata = "";
-                foreach (Dictionary<string, object> row in data)
+                var data = Select.Select_Reviews(productId);
+                var returndata = "";
+                foreach (var row in data)
                 {
-                    string description = Convert.ToString(row["REV_DESCRIPTION"]);
-                    string rating = Convert.ToString(row["RATING"]);
-                    string name = select.Select_Account_Name(Convert.ToString(row["ACC_ID"]));
+                    var description = Convert.ToString(row["REV_DESCRIPTION"]);
+                    var rating = Convert.ToString(row["RATING"]);
+                    var name = Select.Select_Account_Name(Convert.ToString(row["ACC_ID"]));
                     returndata = returndata + name + ": " + rating + ", " + description + "<br />";
-                    
                 }
                 return returndata;
             }
@@ -217,29 +202,15 @@ namespace Steam
         }
 
         /// <summary>
-        /// Finds the games belonging to the given user.
+        ///     Finds the games belonging to the given user.
         /// </summary>
         /// <param name="accId"></param>
         /// <returns></returns>
         public List<Game> Find_Games(int accId)
         {
-            List<Game> games = new List<Game>();
+            var data = Select.Select_Games_User(accId);
 
-            var data = select.Select_Games_User(accId);
-
-            foreach (var s in data)
-            {
-                int gameid = Convert.ToInt32(s["PRODUCT_ID"]);
-                int categoryid = Convert.ToInt32(s["CATEGORY_ID"]);
-                string description = Convert.ToString(s["PR_DESCRIPTION"]);
-                string name = Convert.ToString(s["PR_NAME"]);
-                int price = Convert.ToInt32(s["PRICE"]);
-
-                Game g = new Game(gameid, categoryid, description, name, price);
-                games.Add(g);
-            }
-
-            return games;
+            return (from s in data let gameid = Convert.ToInt32(s["PRODUCT_ID"]) let categoryid = Convert.ToInt32(s["CATEGORY_ID"]) let description = Convert.ToString(s["PR_DESCRIPTION"]) let name = Convert.ToString(s["PR_NAME"]) let price = Convert.ToInt32(s["PRICE"]) select new Game(gameid, categoryid, description, name, price)).ToList();
         }
     }
 }

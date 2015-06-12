@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Steam
 {
-    public partial class Mmorpg : System.Web.UI.Page
+    public partial class Mmorpg : Page
     {
-        readonly Administration admin = new Administration();
-        readonly List<Game> mmorpgs = new List<Game>();
-        private Account acc;
+        private readonly Administration _admin = new Administration();
+        private readonly List<Game> _mmorpgs = new List<Game>();
+        private Account _acc;
 
         /// <summary>
-        /// During the loading of the page, a check takes place to see if the user is logged in. It also fills the listbox with the appropriate
-        /// items.
+        ///     During the loading of the page, a check takes place to see if the user is logged in. It also fills the listbox with
+        ///     the appropriate
+        ///     items.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -23,13 +23,13 @@ namespace Steam
         {
             if (Session["UserData"] != null)
             {
-                acc = (Account)Session["UserData"];
-                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
+                _acc = (Account) Session["UserData"];
+                btnLogin.Text = "Welcome " + _acc.Name + " €" + _acc.Balance + ".";
             }
             else if (Session["newAccount"] != null)
             {
-                acc = (Account)Session["newAccount"];
-                btnLogin.Text = "Welcome " + acc.Name + " €" + acc.Balance + ".";
+                _acc = (Account) Session["newAccount"];
+                btnLogin.Text = "Welcome " + _acc.Name + " €" + _acc.Balance + ".";
             }
 
             if (Session["Games"] == null && !IsPostBack)
@@ -52,7 +52,7 @@ namespace Steam
 
             if (Session["cart"] != null)
             {
-                admin.shoppingCart = (List<Game>)Session["cart"];
+                _admin.ShoppingCart = (List<Game>) Session["cart"];
             }
         }
 
@@ -62,21 +62,21 @@ namespace Steam
         }
 
         /// <summary>
-        /// Puts all available games in a Session, to be used at my discretion.
+        ///     Puts all available games in a Session, to be used at my discretion.
         /// </summary>
         protected void Session_Games()
         {
-            admin.Fill_Games();
+            _admin.Fill_Games();
             Session["Games"] = null;
-            Session["Games"] = admin.games;
+            Session["Games"] = _admin.Games;
         }
 
         /// <summary>
-        /// Find all MMORPGS and add em to the list.
+        ///     Find all MMORPGS and add em to the list.
         /// </summary>
         protected void Fill_Mmorpg()
         {
-            List<Game> allGames = (List<Game>)Session["Games"];
+            var allGames = (List<Game>) Session["Games"];
             /* sadly enough, I couldn't get Linq to work
             mmorpgs =
                 from Game in allGames
@@ -85,17 +85,17 @@ namespace Steam
 
             foreach (var g in allGames.Where(g => g.CategoryId == 1))
             {
-                mmorpgs.Add(g);
+                _mmorpgs.Add(g);
             }
         }
 
         /// <summary>
-        /// Fill the listbox with all MMORPGs.
+        ///     Fill the listbox with all MMORPGs.
         /// </summary>
         protected void Fill_Listbox()
         {
             lbMmorpg.Items.Clear();
-            foreach (var g in mmorpgs)
+            foreach (var g in _mmorpgs)
             {
                 lbMmorpg.Items.Add(g.ToString());
             }
@@ -103,7 +103,8 @@ namespace Steam
 
         protected void mmo_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('You are already on this page!')", true);
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage",
+                "alert('You are already on this page!')", true);
         }
 
         protected void racing_Click(object sender, EventArgs e)
@@ -117,36 +118,38 @@ namespace Steam
         }
 
         /// <summary>
-        /// Event handler for purchasing the selected game.
+        ///     Event handler for purchasing the selected game.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void buy_Click(object sender, EventArgs e)
         {
-            if (acc == null)
+            if (_acc == null)
             {
-                Page home = HttpContext.Current.Handler as Page;
+                var home = HttpContext.Current.Handler as Page;
                 if (home != null)
                 {
-                    ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg", "alert('You need to log in first.');window.location='Signup.aspx';", true);
+                    ScriptManager.RegisterStartupScript(home, home.GetType(), "err_msg",
+                        "alert('You need to log in first.');window.location='Signup.aspx';", true);
                 }
             }
 
             if (lbMmorpg.SelectedValue == null)
             {
-                ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", "alert('If you want to purchase a game, select one in the list!')", true);
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage",
+                    "alert('If you want to purchase a game, select one in the list!')", true);
             }
             else
             {
                 //string gameText = lbMmorpg.SelectedItem.ToString(); //null
                 //string gameText = String.Join(", ",
-                  //  lbMmorpg.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => i.Value)); //empty string
-                string gameText = lbMmorpg.SelectedValue; //null
+                //  lbMmorpg.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => i.Value)); //empty string
+                var gameText = lbMmorpg.SelectedValue; //null
 
-                foreach (var s in mmorpgs.Where(s => s.ToString() == gameText))
+                foreach (var s in _mmorpgs.Where(s => s.ToString() == gameText))
                 {
-                    admin.shoppingCart.Add(s);
-                    Session["cart"] = admin.shoppingCart;
+                    _admin.ShoppingCart.Add(s);
+                    Session["cart"] = _admin.ShoppingCart;
                 }
             }
         }
@@ -163,31 +166,30 @@ namespace Steam
 
         protected void lbMmorpg_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
         }
 
         /// <summary>
-        /// Get's all the reviews belonging to a product, puts them in a listbox.
+        ///     Get's all the reviews belonging to a product, puts them in a listbox.
         /// </summary>
         /// <param name="productId"></param>
         protected void Fill_Reviews(int productId)
         {
-            string allReviews = admin.Find_Reviews(productId);
+            var allReviews = _admin.Find_Reviews(productId);
             lblReviews.Text = allReviews;
         }
 
         /// <summary>
-        /// Finds reviews and stuff.
+        ///     Finds reviews and stuff.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void reviews_Click(object sender, EventArgs e)
         {
-            int productid = 0;
+            var productid = 0;
 
-            string gameText = lbMmorpg.SelectedValue;
+            var gameText = lbMmorpg.SelectedValue;
 
-            foreach (var s in mmorpgs.Where(s => s.ToString() == gameText))
+            foreach (var s in _mmorpgs.Where(s => s.ToString() == gameText))
             {
                 productid = s.GameId;
             }

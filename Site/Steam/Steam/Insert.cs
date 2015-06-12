@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Steam
 {
     /// <summary>
-    /// This class will handle all insert statements.
+    ///     This class will handle all insert statements.
     /// </summary>
     public class Insert
     {
-        Connection conn = new Connection();
+        private readonly Connection _conn = new Connection();
 
         /// <summary>
-        /// This method inserts a new account into the database.
+        ///     This method inserts a new account into the database.
         /// </summary>
         /// <param name="name">Name of the user.</param>
         /// <param name="password">Users password</param>
@@ -24,10 +21,10 @@ namespace Steam
         {
             try
             {
-                string query =
+                var query =
                     "INSERT INTO USER_ACCOUNT (acc_ID, name_user, passw, email_address, birth_date) VALUES " +
                     "(auto_inc_acc.nextval, '" + name + "', '" + password + "', '" + email + "', '" + birthdate + "')";
-                conn.Execute(query);
+                _conn.Execute(query);
                 const string succes = "Account created!";
                 return succes;
             }
@@ -38,7 +35,7 @@ namespace Steam
         }
 
         /// <summary>
-        /// This method inserts a review into the database.
+        ///     This method inserts a review into the database.
         /// </summary>
         /// <param name="description">The description/text of the review</param>
         /// <param name="number">The rating of the review</param>
@@ -49,10 +46,10 @@ namespace Steam
         {
             try
             {
-                string query = "INSERT INTO REVIEW (review_ID, rev_description, rating, acc_ID, product_ID) VALUES " +
-                           "(auto_inc_rev.nextval, '" + description + "', '" + number + "', '" + accId + "', '" +
-                           productId + "')";
-                conn.Execute(query);
+                var query = "INSERT INTO REVIEW (review_ID, rev_description, rating, acc_ID, product_ID) VALUES " +
+                            "(auto_inc_rev.nextval, '" + description + "', '" + number + "', '" + accId + "', '" +
+                            productId + "')";
+                _conn.Execute(query);
                 const string succes = "Review created.";
                 return succes;
             }
@@ -60,11 +57,10 @@ namespace Steam
             {
                 return ex.Message;
             }
-            
         }
 
         /// <summary>
-        /// This method inserts a message (to another user) in the database.
+        ///     This method inserts a message (to another user) in the database.
         /// </summary>
         /// <param name="accId">The senders' acc_id.</param>
         /// <param name="accIdTwo">The receivers' acc_id</param>
@@ -75,10 +71,10 @@ namespace Steam
         {
             try
             {
-                string query = "INSERT INTO POST (post_ID, acc_ID, acc_ID_two, post_text, post_date) VALUES " +
-                                           "(auto_inc_pst.nextval, '" + accId + "', '" + accIdTwo + "', '" + text + "', '" + date +
-                                           "')";
-                conn.Execute(query);
+                var query = "INSERT INTO POST (post_ID, acc_ID, acc_ID_two, post_text, post_date) VALUES " +
+                            "(auto_inc_pst.nextval, '" + accId + "', '" + accIdTwo + "', '" + text + "', '" + date +
+                            "')";
+                _conn.Execute(query);
                 const string succes = "Message send.";
                 return succes;
             }
@@ -86,16 +82,15 @@ namespace Steam
             {
                 return ex.Message;
             }
-            
         }
 
         public string Insert_Library(int accId, int gameId)
         {
             try
             {
-                string query = "INSERT INTO AC_LIBRARY (library_ID, acc_ID, product_ID) VALUES " +
-                               "(auto_inc_lib.nextval, '" + accId + "', '" + gameId + "')";
-                conn.Execute(query);
+                var query = "INSERT INTO AC_LIBRARY (library_ID, acc_ID, product_ID) VALUES " +
+                            "(auto_inc_lib.nextval, '" + accId + "', '" + gameId + "')";
+                _conn.Execute(query);
                 const string succes = "Game purchased and has been added to your library!";
                 return succes;
             }

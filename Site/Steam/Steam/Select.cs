@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Steam
 {
     /// <summary>
-    /// This class will be used to get information out of the database, using SELECT statements.
+    ///     This class will be used to get information out of the database, using SELECT statements.
     /// </summary>
     public class Select
     {
         /// <summary>
-        /// Get's the users current balance.
+        ///     Get's the users current balance.
         /// </summary>
         /// <param name="accId">acc_id of which the balance is looked up.</param>
         /// <returns>Int with the users balance.</returns>
         public int Select_Wallet(int accId)
         {
-            
             var sql = "SELECT steam_balance FROM USER_ACCOUNT WHERE acc_ID = '" + accId + "'";
             var balance = 0;
             var data = Connection.ExecuteQuery(sql);
 
-            foreach (Dictionary<string, object> row in data)
+            foreach (var row in data)
             {
                 balance = Convert.ToInt32(row["STEAM_BALANCE"]);
             }
@@ -30,7 +27,7 @@ namespace Steam
         }
 
         /// <summary>
-        /// This method gets all the games which that acc_id has purchased.
+        ///     This method gets all the games which that acc_id has purchased.
         /// </summary>
         /// <param name="accId">Acc_id of whom we're going to get the library</param>
         /// <returns>A list<dictionary> object with all the rows of ac_library which has acc_id in it.</dictionary></returns>
@@ -40,8 +37,9 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
+
         /// <summary>
-        /// Finds all the information about the given name.
+        ///     Finds all the information about the given name.
         /// </summary>
         /// <param name="gameId">ID of the game.</param>
         /// <returns>Dictionary with the information.</returns>
@@ -53,8 +51,9 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
+
         /// <summary>
-        /// Finds all the account information.
+        ///     Finds all the account information.
         /// </summary>
         /// <param name="email">Email that is given to identify the account.</param>
         /// <param name="password">Password for the account.</param>
@@ -67,8 +66,9 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
+
         /// <summary>
-        /// Returns a list of games belonging to the given category.
+        ///     Returns a list of games belonging to the given category.
         /// </summary>
         /// <param name="catId">ID of the category whose games we want to get.</param>
         /// <returns>List of dictionary objects with the games.</returns>
@@ -79,8 +79,9 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
+
         /// <summary>
-        /// Returns the category_ID and description of the selected category.
+        ///     Returns the category_ID and description of the selected category.
         /// </summary>
         /// <param name="description">Description of the category</param>
         /// <returns>category_ID and category description.</returns>
@@ -91,9 +92,11 @@ namespace Steam
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
+
         /// <summary>
-        /// Selects all the games. I realize that, if the database were a lot bigger, this would not be a good idea. However, here I
-        /// just wanted to see if I could do it, since I had a plan to try and use Linq.
+        ///     Selects all the games. I realize that, if the database were a lot bigger, this would not be a good idea. However,
+        ///     here I
+        ///     just wanted to see if I could do it, since I had a plan to try and use Linq.
         /// </summary>
         /// <returns>List of dictionary objects of all the games.</returns>
         public List<Dictionary<string, object>> Select_All_Games()
@@ -104,19 +107,19 @@ namespace Steam
         }
 
         /// <summary>
-        /// Finds all reviews belonging to a product.
+        ///     Finds all reviews belonging to a product.
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
         public List<Dictionary<string, object>> Select_Reviews(int productId)
         {
-            string sql = "SELECT * FROM REVIEW WHERE product_ID = '" + productId + "'";
+            var sql = "SELECT * FROM REVIEW WHERE product_ID = '" + productId + "'";
             var data = Connection.ExecuteQuery(sql);
             return data;
         }
 
         /// <summary>
-        /// Finds just the name belonging to the account with the given ID.
+        ///     Finds just the name belonging to the account with the given ID.
         /// </summary>
         /// <param name="accId"></param>
         /// <returns></returns>
@@ -124,11 +127,11 @@ namespace Steam
         {
             try
             {
-                string sql = "SELECT NAME_USER FROM USER_ACCOUNT WHERE ACC_ID = '" + accId + "'";
+                var sql = "SELECT NAME_USER FROM USER_ACCOUNT WHERE ACC_ID = '" + accId + "'";
                 var data = Connection.ExecuteQuery(sql);
 
-                string returndata = "";
-                foreach (Dictionary<string, object> x in data)
+                var returndata = "";
+                foreach (var x in data)
                 {
                     returndata = Convert.ToString(x["NAME_USER"]);
                 }
@@ -139,29 +142,20 @@ namespace Steam
             {
                 return ex.Message;
             }
-            
         }
 
         /// <summary>
-        /// Finds all games one user has added to their library.
+        ///     Finds all games one user has added to their library.
         /// </summary>
         /// <param name="accId"></param>
         /// <returns></returns>
         public List<Dictionary<string, object>> Select_Games_User(int accId)
         {
-            try
-            {
-                string sql =
-                    "SELECT * FROM PRODUCT WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM AC_LIBRARY WHERE ACC_ID = '" +
-                    accId + "')";
-                var data = Connection.ExecuteQuery(sql);
-                return data;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            var sql =
+                "SELECT * FROM PRODUCT WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM AC_LIBRARY WHERE ACC_ID = '" +
+                accId + "')";
+            var data = Connection.ExecuteQuery(sql);
+            return data;
         }
-
     }
 }
